@@ -111,4 +111,15 @@ export default class Orders {
       this.#orders[category].addOrder(menuItem, quantity);
     });
   }
+
+  getOrderDetails() {
+    const orderDetails = [];
+    Object.entries(this.#orders).forEach(([category, categoryOrder]) => {
+      const categoryOrderDetails = categoryOrder.getCategorOrderDetails();
+      if (categoryOrderDetails.length > 0) {
+        orderDetails.push(categoryOrderDetails.join("\n"));
+      }
+    });
+    return orderDetails.join("\n");
+  }
 }
