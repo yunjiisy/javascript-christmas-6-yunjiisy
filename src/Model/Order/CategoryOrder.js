@@ -14,6 +14,14 @@ class CategoryOrder {
     }
     return CategorOrderDetails;
   }
+
+  calculateTotalAmountPerCategory(menu) {
+    let categoryTotal = 0;
+    for (const menuName in this.categoryOrder) {
+      categoryTotal += menu[menuName] * this.categoryOrder[menuName];
+    }
+    return categoryTotal;
+  }
 }
 
 export default CategoryOrder;

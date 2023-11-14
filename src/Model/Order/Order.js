@@ -122,4 +122,16 @@ export default class Orders {
     });
     return orderDetails.join("\n");
   }
+
+  calculateTotalAmount() {
+    let total = 0;
+
+    Object.keys(this.menuCategories).forEach((category) => {
+      total += this.#orders[category].calculateTotalAmountPerCategory(
+        this.menuCategories[category].getMenu()
+      );
+    });
+
+    return total;
+  }
 }
