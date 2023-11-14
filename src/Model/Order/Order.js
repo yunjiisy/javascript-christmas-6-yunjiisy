@@ -74,6 +74,16 @@ export default class Orders {
     });
   }
 
+  validateMaxQuantity(parsedOrders) {
+    let totalQuantity = 0;
+    parsedOrders.forEach((parsedOrder) => {
+      totalQuantity += parsedOrder.quantity;
+    });
+    if (totalQuantity > 20) {
+      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+  }
+
   findCategory(menuItem) {
     for (const [category, menu] of Object.entries(this.menuCategories)) {
       if (menu.isValidItem(menuItem)) {
