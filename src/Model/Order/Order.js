@@ -36,4 +36,17 @@ export default class Orders {
       }
     });
   }
+
+  parseOrders(orderList) {
+    const parsedOrders = [];
+    orderList.forEach((orderItem) => {
+      const [menuItem, quantity] = orderItem.split("-");
+      const parsedOrder = {
+        menuItem: menuItem.trim(),
+        quantity: parseInt(quantity, 10),
+      };
+      parsedOrders.push(parsedOrder);
+    });
+    return parsedOrders;
+  }
 }
