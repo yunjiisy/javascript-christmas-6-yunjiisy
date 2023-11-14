@@ -31,6 +31,16 @@ class DateOfMonth {
     }
     return false;
   }
+
+  isSpecialDay() {
+    if ([3, 10, 17, 24, 25, 31].includes(this.date)) {
+      this.#dateInfo.specialDay = "star";
+      return true;
+    }
+    this.#dateInfo.specialDay = "";
+
+    return false;
+  }
 }
 
 export default DateOfMonth;
