@@ -24,6 +24,20 @@ export default class Orders {
     });
   }
 
+  getOrders() {
+    return this.#orders;
+  }
+
+  getValidOrder(inputOrder) {
+    this.validateOrderList(inputOrder);
+    const parsedOrders = this.parseOrders(inputOrder);
+    this.validateMenu(parsedOrders);
+    this.validateQuantity(parsedOrders);
+    this.validateMaxQuantity(parsedOrders);
+    this.validateOnlyBeverage(parsedOrders);
+    return parsedOrders;
+  }
+
   validateinputOrders(inputOrders) {
     inputOrders.forEach((inputOrder) => {
       const itemDetails = inputOrder.split("-");
