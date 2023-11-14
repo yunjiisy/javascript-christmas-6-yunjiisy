@@ -1,5 +1,5 @@
 class CategoryOrder {
-  constructor(category) {
+  constructor() {
     this.categoryOrder = {};
   }
 
@@ -21,6 +21,15 @@ class CategoryOrder {
       categoryTotal += menu[menuName] * this.categoryOrder[menuName];
     }
     return categoryTotal;
+  }
+
+  getTotalQuantityPerCategory() {
+    let total = 0;
+
+    Object.values(this.categoryOrder).forEach((quantity) => {
+      total += quantity;
+    });
+    return total;
   }
 }
 
