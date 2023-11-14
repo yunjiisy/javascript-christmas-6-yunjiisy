@@ -64,6 +64,16 @@ export default class Orders {
     });
   }
 
+  validateQuantity(parsedOrders) {
+    parsedOrders.forEach((parsedOrder) => {
+      if (!Number.isInteger(parsedOrder.quantity)) {
+        throw new Error(
+          "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        );
+      }
+    });
+  }
+
   findCategory(menuItem) {
     for (const [category, menu] of Object.entries(this.menuCategories)) {
       if (menu.isValidItem(menuItem)) {
