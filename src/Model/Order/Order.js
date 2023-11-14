@@ -84,6 +84,20 @@ export default class Orders {
     }
   }
 
+  validateOnlyBeverage(parsedOrders) {
+    let hasNonBeverageOrder = false;
+    parsedOrders.forEach((parsedOrder) => {
+      const category = this.findCategory(parsedOrder.menuItem);
+
+      if (category !== "beverage") {
+        hasNonBeverageOrder = true;
+      }
+    });
+    if (!hasNonBeverageOrder) {
+      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+  }
+
   findCategory(menuItem) {
     for (const [category, menu] of Object.entries(this.menuCategories)) {
       if (menu.isValidItem(menuItem)) {
