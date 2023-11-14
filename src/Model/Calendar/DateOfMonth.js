@@ -23,6 +23,14 @@ class DateOfMonth {
       this.#dateInfo.week = "weekday";
     }
   }
+
+  isChristmasDday() {
+    if (this.date >= 1 && this.date <= 25) {
+      this.#dateInfo.christmasDday = 25 - this.date;
+      return true;
+    }
+    return false;
+  }
 }
 
 export default DateOfMonth;
