@@ -1,3 +1,5 @@
+import CategoryOrder from "./CategoryOrder.js";
+
 import {
   AppetizerMenu,
   MainMenu,
@@ -7,9 +9,9 @@ import {
 import CategoryOrder from "./CategoryOrder.js";
 
 export default class Orders {
-  constructor() {
-    // 의존성 주입으로 바꾸기
+  #orders = {};
 
+  constructor() {
     this.menuCategories = {
       appetizer: new AppetizerMenu(),
       main: new MainMenu(),
@@ -17,13 +19,9 @@ export default class Orders {
       beverage: new BeverageMenu(),
     };
 
-    this.orders = {
-      appetizer: {},
-      main: {},
-      dessert: {},
-      beverage: {},
-    };
-    this.orders = {};
+    Object.keys(this.menuCategories).forEach((category) => {
+      this.orders[category] = new CategoryOrder(category);
+    });
   }
 
   validateinputOrders(inputOrders) {
