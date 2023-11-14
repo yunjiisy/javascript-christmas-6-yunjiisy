@@ -5,11 +5,14 @@ class DateOfMonth {
     this.#dateInfo.day = day;
     this.day = day;
     this.date = date;
+    this.addDateInfo();
   }
 
   addDateInfo() {
     this.isWeekDay();
     this.isWeekend();
+    this.isChristmasDday();
+    this.isSpecialDay();
   }
 
   isWeekend() {
@@ -40,6 +43,10 @@ class DateOfMonth {
     this.#dateInfo.specialDay = "";
 
     return false;
+  }
+
+  getSpecificInfo(key) {
+    return this.#dateInfo[key];
   }
 }
 
