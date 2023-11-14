@@ -20,7 +20,7 @@ export default class Orders {
     };
 
     Object.keys(this.menuCategories).forEach((category) => {
-      this.orders[category] = new CategoryOrder(category);
+      this.#orders[category] = new CategoryOrder(category);
     });
   }
 
@@ -102,5 +102,13 @@ export default class Orders {
         return category;
       }
     }
+  }
+
+  addOrders(parsedOrders) {
+    parsedOrders.forEach(({ menuItem, quantity }) => {
+      const category = this.findCategory(menuItem);
+
+      this.#orders[category].addOrder(menuItem, quantity);
+    });
   }
 }
