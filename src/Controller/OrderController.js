@@ -3,6 +3,7 @@ import InputView from "../View/InputView.js";
 import OutputView from "../View/OutputView.js";
 import Orders from "../Model/Order/Orders.js";
 import VisitDate from "../Model/Calendar/VisitDate.js";
+import EventController from "./EventController.js";
 import {
   AppetizerMenu,
   BeverageMenu,
@@ -27,6 +28,8 @@ class OrderController {
     this.order.addOrders(parsedOrders);
 
     this.showOrderInfo();
+
+    this.showEventPlan();
   }
 
   async getVisitDate() {
@@ -53,6 +56,11 @@ class OrderController {
   showOrderInfo() {
     OutputView.printMenu(this.order.getOrderDetails());
     OutputView.printTotalAmount(this.order.calculateTotalAmount());
+  }
+
+  showEventPlan() {
+    const eventController = new EventController();
+    eventController.eventPlan(this.order, visitDate);
   }
 }
 
