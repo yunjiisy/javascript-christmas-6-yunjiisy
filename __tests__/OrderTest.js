@@ -4,7 +4,7 @@ import {
   DessertMenu,
   BeverageMenu,
 } from "../src/Model/Menu/Menu";
-import Orders from "../src/Model/Order/Order";
+import Orders from "../src/Model/Order/Orders";
 
 describe("Orders class test", () => {
   let orders;
