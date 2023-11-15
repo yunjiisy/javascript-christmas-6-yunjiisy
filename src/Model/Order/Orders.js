@@ -1,4 +1,5 @@
 import CategoryOrder from "./CategoryOrder.js";
+import { ERROR } from "../../Constants/Constants.js";
 
 export default class Orders {
   #orders = {};
@@ -34,9 +35,7 @@ export default class Orders {
     inputOrders.forEach((inputOrder) => {
       const itemDetails = inputOrder.split("-");
       if (itemDetails.length !== 2) {
-        throw new Error(
-          "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
-        );
+        throw new Error(ERROR.INVALID_ORDER);
       }
     });
   }
@@ -61,9 +60,7 @@ export default class Orders {
         !category ||
         !this.menuCategories[category].isValidItem(parsedOrder.menuItem)
       ) {
-        throw new Error(
-          "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
-        );
+        throw new Error(ERROR.INVALID_ORDER);
       }
     });
   }
@@ -71,9 +68,7 @@ export default class Orders {
   validateQuantity(parsedOrders) {
     parsedOrders.forEach((parsedOrder) => {
       if (!Number.isInteger(parsedOrder.quantity)) {
-        throw new Error(
-          "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
-        );
+        throw new Error(ERROR.INVALID_ORDER);
       }
     });
   }
@@ -84,7 +79,7 @@ export default class Orders {
       totalQuantity += parsedOrder.quantity;
     });
     if (totalQuantity > 20) {
-      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      throw new Error(ERROR.INVALID_ORDER);
     }
   }
 
@@ -98,7 +93,7 @@ export default class Orders {
       }
     });
     if (!hasNonBeverageOrder) {
-      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      throw new Error(ERROR.INVALID_ORDER);
     }
   }
 

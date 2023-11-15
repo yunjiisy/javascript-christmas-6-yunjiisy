@@ -5,6 +5,7 @@ import {
   BeverageMenu,
 } from "../src/Model/Menu/Menu";
 import Orders from "../src/Model/Order/Orders";
+import { ERROR } from "../src/Constants/Constants";
 
 describe("Orders class test", () => {
   let orders;
@@ -39,14 +40,14 @@ describe("Orders class test", () => {
     test("메뉴판에 없는 메뉴를 주문하면 예외가 발생한다.", () => {
       const inputOrder = ["양송이수프-1", "티본스테이크-1", "환타-2"];
       expect(() => orders.getValidOrder(inputOrder)).toThrowError(
-        "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        ERROR.INVALID_ORDER
       );
     });
 
     test("자연수가 아닌 주문 수량을 넣으면 에외가 발생한다.", () => {
       const inputOrder = ["양송이수프-a", "티본스테이크-1"];
       expect(() => orders.getValidOrder(inputOrder)).toThrowError(
-        "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        ERROR.INVALID_ORDER
       );
     });
 
@@ -58,14 +59,14 @@ describe("Orders class test", () => {
         "샴페인-1",
       ];
       expect(() => orders.getValidOrder(inputOrder)).toThrowError(
-        "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        ERROR.INVALID_ORDER
       );
     });
 
     test("음료만 주문하면 예외가 방생한다.", () => {
       const inputOrder = ["레드와인-2", "샴페인-1"];
       expect(() => orders.getValidOrder(inputOrder)).toThrowError(
-        "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요."
+        ERROR.INVALID_ORDER
       );
     });
 
