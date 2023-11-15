@@ -29,7 +29,7 @@ class OrderController {
 
     this.showOrderInfo();
 
-    this.showEventPlan();
+    this.showEventPlan(visitDate);
   }
 
   async getVisitDate() {
@@ -58,7 +58,7 @@ class OrderController {
     OutputView.printTotalAmount(this.order.calculateTotalAmount());
   }
 
-  showEventPlan() {
+  showEventPlan(visitDate) {
     const eventController = new EventController();
     eventController.eventPlan(this.order, visitDate);
   }
