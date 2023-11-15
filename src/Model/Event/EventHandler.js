@@ -60,5 +60,12 @@ class EventHandler {
       this.discount.calculateTotalDiscountAmount()
     );
   }
+
+  calculateBenefitAmount() {
+    return (
+      this.discount.calculateTotalDiscountAmount() +
+      this.giftMenu.getGiftMenuPrice()
+    );
+  }
 }
 export default EventHandler;
