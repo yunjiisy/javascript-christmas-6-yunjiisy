@@ -28,5 +28,9 @@ class EventHandler {
     }
     return "없음";
   }
+
+  getBadge() {
+    return this.badge.getBadge();
+  }
 }
 export default EventHandler;
