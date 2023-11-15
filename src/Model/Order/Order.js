@@ -41,9 +41,9 @@ export default class Orders {
     });
   }
 
-  parseOrders(orderList) {
+  parseOrders(inputOrders) {
     const parsedOrders = [];
-    orderList.forEach((orderItem) => {
+    inputOrders.forEach((orderItem) => {
       const [menuItem, quantity] = orderItem.split("-");
       const parsedOrder = {
         menuItem: menuItem.trim(),
