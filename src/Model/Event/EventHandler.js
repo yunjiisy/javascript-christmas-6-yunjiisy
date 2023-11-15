@@ -33,6 +33,14 @@ class EventHandler {
     return this.badge.getBadge();
   }
 
+  getBenefitList() {
+    if (this.#benefitList.length === 0) {
+      return "없음";
+    }
+
+    return this.#benefitList.join("\n");
+  }
+
   makeBenefitList() {
     this.discount.discountPolicies.forEach((policy) => {
       this.#benefitList.push(
