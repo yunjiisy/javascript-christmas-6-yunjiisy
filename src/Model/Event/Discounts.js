@@ -8,6 +8,13 @@ class Discounts {
       );
     }
   }
+
+  calculateTotalDiscountAmount() {
+    return this.discountPolicies.reduce(
+      (total, discount) => total + discount.calculateDiscountAmount(),
+      0
+    );
+  }
 }
 
 export default Discounts;
