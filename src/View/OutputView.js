@@ -1,42 +1,43 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE } from "../Constants/Constants";
 
 const OutputView = {
   printEventBenefitsPreview() {
-    Console.print("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+    Console.print(MESSAGE.EVENT_OVERVIEW);
   },
 
   printMenu(orderDetails) {
-    Console.print("\n<주문 메뉴>");
+    Console.print(MESSAGE.ORDER_MENU);
     Console.print(orderDetails);
   },
 
   printTotalAmount(totalAmount) {
-    Console.print("\n<할인 전 총주문 금액>");
+    Console.print(MESSAGE.TOTAL_AMOUNT);
     Console.print(`${totalAmount}원`);
   },
 
   printGiftMenu(giftMenu) {
-    Console.print("\n<증정 메뉴>");
+    Console.print(MESSAGE.GIFT_MENU);
     Console.print(`${giftMenu}`);
   },
 
   printBenefitList(benefitList) {
-    Console.print("\n<혜택 내역>");
+    Console.print(MESSAGE.BENEFIT_LIST);
     Console.print(benefitList);
   },
 
   printTotalBenefitAmount(benefitTotalAmount) {
-    Console.print("\n<총혜택 금액>");
+    Console.print(MESSAGE.BENEFIT_AMOUNT);
     Console.print(`${benefitTotalAmount}원`);
   },
 
   printPayAmount(payAmount) {
-    Console.print("\n<할인 후 예상 결제 금액>");
+    Console.print(MESSAGE.PAY_AMOUNT);
     Console.print(`${payAmount}원`);
   },
 
   printBadge(badge) {
-    Console.print("\n<12월 이벤트 배지>");
+    Console.print(MESSAGE.BADGE);
     Console.print(badge);
   },
 };
