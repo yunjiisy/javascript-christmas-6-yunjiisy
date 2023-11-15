@@ -53,5 +53,12 @@ class EventHandler {
       );
     }
   }
+
+  calculatePayAmount() {
+    return (
+      this.orders.calculateTotalAmount() -
+      this.discount.calculateTotalDiscountAmount()
+    );
+  }
 }
 export default EventHandler;
