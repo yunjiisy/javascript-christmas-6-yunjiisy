@@ -21,7 +21,7 @@ export default class Orders {
   }
 
   getValidOrder(inputOrder) {
-    this.validateOrderList(inputOrder);
+    this.validateinputOrders(inputOrder);
     const parsedOrders = this.parseOrders(inputOrder);
     this.validateMenu(parsedOrders);
     this.validateQuantity(parsedOrders);
