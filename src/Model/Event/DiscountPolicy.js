@@ -1,3 +1,4 @@
+import { MESSAGE, DATE_INFO, DISCOUNT_AMOUNT } from "../../Constants/Constants";
 export class DiscountPolicy {
   constructor(dateInfo, orders) {
     this.dateInfo = dateInfo;
@@ -15,12 +16,17 @@ export class DiscountPolicy {
 
 export class ChristmasDdayDiscountPolicy extends DiscountPolicy {
   calculateDiscountAmount() {
-    const christmasDday = this.dateInfo.getSpecificInfo("christmasDday");
-    return (24 - christmasDday) * 100 + 1000;
+    const christmasDday = this.dateInfo.getSpecificInfo(
+      DATE_INFO.CHRISTMAS_DDAY
+    );
+    return (
+      (24 - christmasDday) * DISCOUNT_AMOUNT.DDAY_INCREASE +
+      DISCOUNT_AMOUNT.DDAY_BASE
+    );
   }
 
   getDiscountName() {
-    return "크리스마스 디데이 할인";
+    return MESSAGE.CHRISTMAS_DDAY;
   }
 }
 
@@ -29,11 +35,11 @@ export class WeekdayDiscountPolicy extends DiscountPolicy {
     const dessertQuantity = this.orders
       .getOrders()
       .dessert.getTotalQuantityPerCategory();
-    return dessertQuantity * 2023;
+    return dessertQuantity * DISCOUNT_AMOUNT.WEEKDAY;
   }
 
   getDiscountName() {
-    return "평일 할인";
+    return MESSAGE.WEEKDAY;
   }
 }
 
@@ -42,20 +48,20 @@ export class WeekendDiscountPolicy extends DiscountPolicy {
     const mainQuantity = this.orders
       .getOrders()
       .main.getTotalQuantityPerCategory();
-    return mainQuantity * 2023;
+    return mainQuantity * DISCOUNT_AMOUNT.WEEKEND;
   }
 
   getDiscountName() {
-    return "주말 할인";
+    return MESSAGE.WEEKEND;
   }
 }
 
 export class SpecialDayDiscountPolicy extends DiscountPolicy {
   calculateDiscountAmount() {
-    return 1000;
+    return DISCOUNT_AMOUNT.SPECIALDAY;
   }
 
   getDiscountName() {
-    return "특별 할인";
+    return MESSAGE.SPECIAL_DAY;
   }
 }

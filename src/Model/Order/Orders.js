@@ -1,5 +1,5 @@
 import CategoryOrder from "./CategoryOrder.js";
-import { ERROR } from "../../Constants/Constants.js";
+import { ERROR, NUMBER, CATEGORY } from "../../Constants/Constants.js";
 
 export default class Orders {
   #orders = {};
@@ -78,7 +78,7 @@ export default class Orders {
     parsedOrders.forEach((parsedOrder) => {
       totalQuantity += parsedOrder.quantity;
     });
-    if (totalQuantity > 20) {
+    if (totalQuantity > NUMBER.MAX_QUANTITY) {
       throw new Error(ERROR.INVALID_ORDER);
     }
   }
@@ -88,7 +88,7 @@ export default class Orders {
     parsedOrders.forEach((parsedOrder) => {
       const category = this.findCategory(parsedOrder.menuItem);
 
-      if (category !== "beverage") {
+      if (category !== CATEGORY.BEVERAGE) {
         hasNonBeverageOrder = true;
       }
     });

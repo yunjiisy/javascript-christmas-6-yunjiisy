@@ -2,6 +2,7 @@ import EventCalendar from "../Calendar/EventCalendar.js";
 import Badge from "./Badge.js";
 import DiscountGenerator from "./DiscountGenerator.js";
 import GiftMenu from "./Gift.js";
+import { MESSAGE } from "../../Constants/Constants.js";
 
 class EventHandler {
   #benefitList;
@@ -26,7 +27,7 @@ class EventHandler {
         this.giftMenu.getGiftMenu().length
       }개`;
     }
-    return "없음";
+    return MESSAGE.NOTHING;
   }
 
   getBadge() {
@@ -35,7 +36,7 @@ class EventHandler {
 
   getBenefitList() {
     if (this.#benefitList.length === 0) {
-      return "없음";
+      return MESSAGE.NOTHING;
     }
 
     return this.#benefitList.join("\n");

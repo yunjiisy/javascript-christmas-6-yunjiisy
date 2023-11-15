@@ -1,4 +1,5 @@
 import { BeverageMenu } from "../Menu/Menu.js";
+import { GIFTMENU } from "../../Constants/Constants.js";
 
 class GiftMenu {
   #giftMenu = [];
@@ -12,7 +13,7 @@ class GiftMenu {
 
   addGiftIfEligible(totalAmount) {
     if (totalAmount >= 120000) {
-      this.#giftMenu.push("샴페인");
+      this.#giftMenu.push(GIFTMENU.MENU);
       this.#giftMenuPrice = this.beverageMenu.getMenu()[this.#giftMenu];
     }
   }

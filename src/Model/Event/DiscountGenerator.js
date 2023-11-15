@@ -4,8 +4,8 @@ import {
   WeekdayDiscountPolicy,
   WeekendDiscountPolicy,
 } from "./DiscountPolicy.js";
-
 import Discounts from "./Discounts.js";
+import { DATE_INFO } from "../../Constants/Constants.js";
 
 class DiscountGenerator {
   generateDiscount(dateInfo, orders) {
@@ -15,15 +15,15 @@ class DiscountGenerator {
       discountPolicies.push(ChristmasDdayDiscountPolicy);
     }
 
-    if (dateInfo.getSpecificInfo("week") === "weekday") {
+    if (dateInfo.getSpecificInfo(DATE_INFO.WEEK) === DATE_INFO.WEEKDAY) {
       discountPolicies.push(SpecialDayDiscountPolicy);
     }
 
-    if (dateInfo.getSpecificInfo("week") === "weekend") {
+    if (dateInfo.getSpecificInfo(DATE_INFO.WEEK) === DATE_INFO.WEEKEND) {
       discountPolicies.push(WeekdayDiscountPolicy);
     }
 
-    if (dateInfo.getSpecificInfo("specialDay") === "star") {
+    if (dateInfo.getSpecificInfo(DATE_INFO.SPECIAL_DAY) === DATE_INFO.STAR) {
       discountPolicies.push(WeekendDiscountPolicy);
     }
 

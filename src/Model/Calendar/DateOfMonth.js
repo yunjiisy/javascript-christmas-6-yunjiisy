@@ -1,3 +1,5 @@
+import { DATE_INFO, DAY, DATE } from "../../Constants/Constants";
+
 class DateOfMonth {
   #dateInfo = {};
 
@@ -16,28 +18,28 @@ class DateOfMonth {
   }
 
   isWeekend() {
-    if (this.day === 5 || this.day === 6) {
-      this.#dateInfo.week = "weekend";
+    if (this.day === DAY.FRIDAY || this.day === DAY.SATURDAY) {
+      this.#dateInfo.week = DATE_INFO.WEEKEND;
     }
   }
 
   isWeekDay() {
-    if (this.day >= 0 && this.day <= 4) {
-      this.#dateInfo.week = "weekday";
+    if (this.day >= DAY.SUNDAY && this.day <= DAY.THURSDAY) {
+      this.#dateInfo.week = DATE_INFO.WEEKDAY;
     }
   }
 
   isChristmasDday() {
-    if (this.date >= 1 && this.date <= 25) {
-      this.#dateInfo.christmasDday = 25 - this.date;
+    if (this.date >= DATE.FIRST && this.date <= DATE.CHRISTMAS) {
+      this.#dateInfo.christmasDday = DATE.CHRISTMAS - this.date;
       return true;
     }
     return false;
   }
 
   isSpecialDay() {
-    if ([3, 10, 17, 24, 25, 31].includes(this.date)) {
-      this.#dateInfo.specialDay = "star";
+    if (DATE.SPECIAL_DATES.includes(this.date)) {
+      this.#dateInfo.specialDay = DATE_INFO.STAR;
       return true;
     }
     this.#dateInfo.specialDay = "";
