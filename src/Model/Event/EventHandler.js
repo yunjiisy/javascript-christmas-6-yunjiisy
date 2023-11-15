@@ -32,5 +32,18 @@ class EventHandler {
   getBadge() {
     return this.badge.getBadge();
   }
+
+  makeBenefitList() {
+    this.discount.discountPolicies.forEach((policy) => {
+      this.#benefitList.push(
+        `${policy.getDiscountName()}: -${policy.calculateDiscountAmount()}원`
+      );
+    });
+    if (this.giftMenu.getGiftMenu().length !== 0) {
+      this.#benefitList.push(
+        `증정 이벤트: -${this.giftMenu.getGiftMenuPrice()}원`
+      );
+    }
+  }
 }
 export default EventHandler;
