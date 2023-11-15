@@ -1,22 +1,14 @@
 import CategoryOrder from "./CategoryOrder.js";
 
-import {
-  AppetizerMenu,
-  MainMenu,
-  DessertMenu,
-  BeverageMenu,
-} from "../Menu/Menu.js";
-import CategoryOrder from "./CategoryOrder.js";
-
 export default class Orders {
   #orders = {};
 
-  constructor() {
+  constructor(appetizerMenu, mainMenu, dessertMenu, beverageMenu) {
     this.menuCategories = {
-      appetizer: new AppetizerMenu(),
-      main: new MainMenu(),
-      dessert: new DessertMenu(),
-      beverage: new BeverageMenu(),
+      appetizer: appetizerMenu,
+      main: mainMenu,
+      dessert: dessertMenu,
+      beverage: beverageMenu,
     };
 
     Object.keys(this.menuCategories).forEach((category) => {
